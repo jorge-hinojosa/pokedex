@@ -1,21 +1,21 @@
 import React from "react";
 import { Store } from "../Store";
-import { getHomePokemon } from "../Actions";
+import { getPokemon } from "../Actions";
 
 const FeatPokemon = React.lazy<any>(() => import("./FeatPokemon"));
 
 export default function Home(): JSX.Element {
   const { state, dispatch } = React.useContext(Store);
-
   const props = {
-    pokemon: state.pokemon,
+    homePokemon: state.homePokemon,
     party: state.party,
     store: { state, dispatch }
   };
 
-  React.useEffect(() => {
-    state.pokemon.length === 0 && getHomePokemon(dispatch);
-  });
+  const [userInput, setUserInput] = React.useState("");
+  const handleSearch = (e: React.FormEvent<HTMLInputElement>): void => {
+    setUserInput(e.currentTarget.value.toLowerCase());
+  };
 
   return (
     <React.Fragment>
@@ -51,13 +51,22 @@ export default function Home(): JSX.Element {
         <p className="w-3/4 mb-5 text-center text-sm">
           Discover your favorite Pokemon and add them to your party!
         </p>
-        <div className="flex flex-row justify-center items-center">
+        <form
+          onSubmit={() => getPokemon(userInput, dispatch)}
+          className="flex flex-row justify-center items-center"
+        >
           <input
-            className="rounded bg-blue-600 text-md pl-1 focus:outline-none"
+            className="rounded bg-blue-600 text-sm pl-1 focus:outline-none"
             placeholder="Search"
+            onChange={handleSearch}
           />
-          <button className="ml-2">Go!</button>
-        </div>
+          <i
+            onClick={() => getPokemon(userInput, dispatch)}
+            className="material-icons ml-1 text-gray-200"
+          >
+            search
+          </i>
+        </form>
       </div>
       <React.Suspense fallback={<div>Loading...</div>}>
         <FeatPokemon {...props} />
