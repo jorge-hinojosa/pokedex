@@ -16,11 +16,10 @@ export const getHomePokemon = async (dispatch: any, randomID: number) => {
 };
 
 export const getPokemon = async (val: string, dispatch: any) => {
-  console.log("hit");
   const URL = `https://pokeapi.co/api/v2/pokemon/${val}`;
   const data = await axios
     .get(URL)
-    .then(res => console.log(res))
+    .then(res => res.data)
     .catch(err => console.log(err));
 
   return dispatch({
@@ -40,13 +39,13 @@ export const toggleFavorite = (
     payload: pokemon
   };
 
-  console.log(pokemonInParty);
+  // console.log(pokemonInParty);
   if (pokemonInParty === true) {
     console.log(state.party);
     const withoutPokemon = state.party.filter(
       (member: any) => member.id !== pokemon.id
     );
-    console.log(withoutPokemon);
+    // console.log(withoutPokemon);
     dispatchObj = {
       type: "REMOVE_POKE_FROM_PARTY",
       payload: withoutPokemon

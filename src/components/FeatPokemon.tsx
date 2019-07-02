@@ -78,7 +78,7 @@ export default function PokemonList(props: any): JSX.Element {
   });
 
   return (
-    <div className="flex flex-col justify-center items-center mt-5">
+    <div className="flex flex-col justify-center items-center mt-3">
       <h1 className="text-xl font-bold font-robomono">Featured Pokémon</h1>
       {viewPokemon}
     </div>

@@ -5,6 +5,7 @@
 */
 export interface IState {
   homePokemon: Array<IPokemon>;
+  currPokemon: Array<IPokemon>;
   party: Array<IPokemon>;
 }
 export interface IPokemon {

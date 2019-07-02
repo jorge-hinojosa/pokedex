@@ -3,6 +3,7 @@ import { IState, IAction } from "./Interfaces";
 
 const initialState: IState = {
   homePokemon: [],
+  currPokemon: [],
   party: []
 };
 
@@ -14,7 +15,7 @@ function reducer(state: IState, action: IAction): IState {
     case "GET_HOME_POKEMON":
       return { ...state, homePokemon: [...state.homePokemon, payload] };
     case "GET_POKEMON":
-      return { ...state, homePokemon: payload };
+      return { ...state, currPokemon: payload };
     case "ADD_POKE_TO_PARTY":
       return { ...state, party: [...state.party, payload] };
     case "REMOVE_POKE_FROM_PARTY":
