@@ -1,6 +1,8 @@
 import React from "react";
 import { Store } from "../Store";
 import { Redirect } from "react-router";
+// import { GET_POKEMON } from "../Actions";
+import { Query } from "react-apollo";
 
 const FeatPokemon = React.lazy<any>(() => import("./FeatPokemon"));
 
@@ -17,6 +19,21 @@ export default function Home(): JSX.Element {
     setRedirect(true);
   };
 
+  // const HomePoke = () => (
+  //   <Query query={GET_POKEMON}>
+  //     {({ loading, error, data }: { [key: string]: any }) => {
+  //       console.log("hit");
+  //       if (loading) return "Loading...";
+  //       if (error) return `Error! ${error.message}`;
+  //       if (data) {
+  //         console.log(data);
+  //         // return <Home users={data.users.data} />;
+  //       }
+  //     }}
+  //   </Query>
+  // );
+  // HomePoke();
+
   const props = {
     homePokemon: state.homePokemon,
     party: state.party,
@@ -25,7 +42,7 @@ export default function Home(): JSX.Element {
   return (
     <React.Fragment>
       {redirect ? <Redirect to={`/pokemon/${userInput}`} /> : null}
-      <div className="w-full h-56 mt-5 bg-blue-500 flex flex-col justify-center items-center text-gray-200">
+      <div className="w-full h-56 mt-5 bg-blue-500 border-b-4 border-blue-300 flex flex-col justify-center items-center text-gray-200 shadow">
         <h1 className="font-bold text-2xl my-3 font-robomono">Pokédex</h1>
         <div className="w-56 flex flex-row justify-around items-center mb-2">
           <img

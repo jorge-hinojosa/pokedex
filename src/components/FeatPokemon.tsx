@@ -3,6 +3,7 @@ import React from "react";
 import { getHomePokemon, toggleFavorite } from "../Actions";
 import Favorite from "./Favorite";
 import { IFavProps } from "../Interfaces";
+import { Link } from "react-router-dom";
 
 export default function PokemonList(props: any): JSX.Element {
   let randomID: number = Math.floor(Math.random() * 807);
@@ -55,7 +56,7 @@ export default function PokemonList(props: any): JSX.Element {
     return (
       <article
         key={pokemon.data.id}
-        className="w-11/12 flex flex-col justify-around items-center mt-3 p-2 mb-2 bg-blue-500 border-2 border-blue-800 rounded shadow-lg text-gray-200"
+        className="w-5/6 flex flex-col justify-around items-center mt-3 p-2 mb-2 bg-blue-500 border-2 border-blue-800 rounded shadow-lg text-gray-200 relative"
       >
         <div className="container flex flex-row justify-around items-center">
           <section className="text-center -mt-2 ml-2">
@@ -67,11 +68,13 @@ export default function PokemonList(props: any): JSX.Element {
             <p className="text-sm">Height: {height.toFixed(2)} ft.</p>
             <p className="text-sm">Weight: {weight.toFixed(2)} lbs.</p>
           </section>
-          <img
-            src={sprite}
-            alt={name}
-            className="w-32 bg-red-500 border-4 border-gray-200 rounded-full shadow-md"
-          />
+          <Link to={`./pokemon/${pokemon.data.name}`}>
+            <img
+              src={sprite}
+              alt={name}
+              className="w-24 bg-red-500 border-4 border-gray-200 rounded-full shadow-md hover:cursor-pointer"
+            />
+          </Link>
         </div>
       </article>
     );

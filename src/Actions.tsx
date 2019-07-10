@@ -1,3 +1,4 @@
+import React from "react";
 import axios from "axios";
 import { IState, IPokemon, IAction } from "./Interfaces";
 
@@ -28,11 +29,25 @@ export const getPokemon = async (val: string, dispatch: any) => {
   });
 };
 
+export const getPokemonSpecies = async (val: string, dispatch: any) => {
+  const URL = `https://pokeapi.co/api/v2/pokemon-species/${val}`;
+  const data = await axios
+    .get(URL)
+    .then(res => res.data)
+    .catch(err => console.log(err));
+
+  return dispatch({
+    type: "GET_POKEMON_SPECIES",
+    payload: data
+  });
+};
+
 export const toggleFavorite = (
   state: IState,
   dispatch: any,
   pokemon: IPokemon | any
 ): IAction => {
+  console.log("hit");
   const pokemonInParty = state.party.includes(pokemon);
   let dispatchObj = {
     type: "ADD_POKE_TO_PARTY",
@@ -43,7 +58,7 @@ export const toggleFavorite = (
   if (pokemonInParty === true) {
     console.log(state.party);
     const withoutPokemon = state.party.filter(
-      (member: any) => member.id !== pokemon.id
+      (member: IPokemon) => member.id !== pokemon.id
     );
     // console.log(withoutPokemon);
     dispatchObj = {

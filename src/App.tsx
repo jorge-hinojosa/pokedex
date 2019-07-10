@@ -1,8 +1,14 @@
 import React from "react";
 import { HashRouter as Router, Link } from "react-router-dom";
 import routes from "./routes";
+import Menu from "./components/Menu";
 
 function App(): JSX.Element {
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  const menuProps = {
+    menuOpen,
+    setMenuOpen
+  };
   return (
     <Router>
       <div className="flex flex-col align-center min-h-screen bg-gray-100 font-robo">
@@ -16,11 +22,10 @@ function App(): JSX.Element {
                   className="w-6"
                 />
               </Link>
-              <i className="material-icons text-gray-200">menu</i>
+              <Menu {...menuProps} />
             </div>
           </nav>
         </header>
-        <section />
         {routes}
       </div>
     </Router>
