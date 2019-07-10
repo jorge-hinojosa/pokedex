@@ -19,21 +19,6 @@ export default function Home(): JSX.Element {
     setRedirect(true);
   };
 
-  // const HomePoke = () => (
-  //   <Query query={GET_POKEMON}>
-  //     {({ loading, error, data }: { [key: string]: any }) => {
-  //       console.log("hit");
-  //       if (loading) return "Loading...";
-  //       if (error) return `Error! ${error.message}`;
-  //       if (data) {
-  //         console.log(data);
-  //         // return <Home users={data.users.data} />;
-  //       }
-  //     }}
-  //   </Query>
-  // );
-  // HomePoke();
-
   const props = {
     homePokemon: state.homePokemon,
     party: state.party,

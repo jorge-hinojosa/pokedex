@@ -193,11 +193,14 @@ export default function PokemonProfile(props: any): JSX.Element {
             const { pokemon } = data;
             console.log(pokemon);
             return (
-              <img
-                className="w-64"
-                src={pokemon.sprites.front_default}
-                alt={pokemon.name}
-              />
+              <>
+                <img
+                  className="w-64"
+                  src={pokemon.sprites.front_default}
+                  alt={pokemon.name}
+                />
+                <h1 className="text-gray-700">{pokemon.name}</h1>
+              </>
             );
           }}
         </Query>
