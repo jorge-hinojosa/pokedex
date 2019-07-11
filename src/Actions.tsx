@@ -47,8 +47,8 @@ export const toggleFavorite = (
   dispatch: any,
   pokemon: IPokemon | any
 ): IAction => {
-  console.log("hit");
-  const pokemonInParty = state.party.includes(pokemon);
+  let filtered = state.party.filter((poke: any) => poke.id === pokemon.id)
+  const pokemonInParty = state.party.includes(filtered[0]);
   let dispatchObj = {
     type: "ADD_POKE_TO_PARTY",
     payload: pokemon
