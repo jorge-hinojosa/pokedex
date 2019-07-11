@@ -7,10 +7,10 @@ import { RestLink } from "apollo-link-rest";
 import { ApolloClient } from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloProvider } from "react-apollo";
-import gql from "graphql-tag";
+// import gql from "graphql-tag";
 
 const restLink = new RestLink({
-  uri: "https://pokeapi.co/api/v2/"
+  uri: 'https://pokeapi.co/api/v2',
 });
 
 const client = new ApolloClient({

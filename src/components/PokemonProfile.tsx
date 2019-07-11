@@ -6,7 +6,8 @@ import { toggleFavorite } from "../Actions";
 import { IFavProps, IPokemon } from "../Interfaces";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
-import { GET_POKEMON } from "../Queries";
+import { GET_POKEMON, GET_EVO_CHAIN } from "../Queries";
+import EvoChain from './EvoChain'
 
 const Favorite = React.lazy<any>(() => import("./Favorite"));
 
@@ -21,7 +22,7 @@ export default function PokemonProfile(props: any): JSX.Element {
   const { currPokemon, currSpecies } = state;
 
   console.log(currPokemon);
-  // console.log(currSpecies);
+  console.log(currSpecies);
 
   let sprite: string;
   currPokemon.sprites === undefined
@@ -100,11 +101,7 @@ export default function PokemonProfile(props: any): JSX.Element {
     "url"
   ]);
 
-  // const getEvoChain = async () => {
-  //   console.log(chainURL);
-  //   axios.get(chainURL).then(res => console.log(res));
-  // };
-  // getEvoChain();
+  let evoChainUrl: string;
 
   let favProps: IFavProps = {
     pokemon: currPokemon,
@@ -175,36 +172,45 @@ export default function PokemonProfile(props: any): JSX.Element {
         <p className="text-center text-sm mt-2 mx-5">{description}</p>
       </div>
       <section>
-        <Query<{ pokemon: IPokemon }>
+        <Query
+          // <{ pokemon: IPokemon }>
           query={GET_POKEMON}
           fetchPolicy={"network-only"}
           variables={{
-            path: `pokemon/${(console.log(pokemonID) as any) || pokemonID}/`
+            path: `/pokemon/${pokemonID}/`
           }}
         >
-          {({ loading, error, data }) => {
+          {({ loading, error, data }: { [key: string]: any }) => {
             if (loading) {
               console.log("loading");
-              return <p>Loading...</p>;
+              return <p className="text-gray-700">Loading...</p>;
             }
 
-            if (error) return <p>Error </p>;
-            if (!data) return <p>Error</p>;
+            if (error) 
+            {
+              console.log(error)
+              return <p className="text-gray-700">Error </p>;
+            }
+            if (!data) return <p className="text-gray-700">Error</p>;
             const { pokemon } = data;
             console.log(pokemon);
             return (
-              <>
+              <div className="text-gray-700">
                 <img
                   className="w-64"
                   src={pokemon.sprites.front_default}
                   alt={pokemon.name}
                 />
-                <h1 className="text-gray-700">{pokemon.name}</h1>
-              </>
+                <h1 >{pokemon.name}</h1>
+                {pokemon.types.map((e: any) => {
+                  return <h1>{e.type.name}</h1>;
+                })}
+                <EvoChain evoChainUrl={pokemon.species.evolution_chain.url}/>
+              </div>
             );
           }}
+
         </Query>
-        ;
       </section>
     </div>
   );

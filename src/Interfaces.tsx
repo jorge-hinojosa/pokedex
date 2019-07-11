@@ -23,7 +23,7 @@ export interface IPokemon {
   sprites: {
     front_default: string;
   };
-  types: {};
+  types: [];
   game_indices: [];
 }
 export interface IAction {
