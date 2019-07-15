@@ -9,7 +9,9 @@ export const GET_POKEMON = gql`
       weight
       species
         @rest(type: "Species", path: "/pokemon-species/{exportVariables.id}") {
+        flavor_text_entries
         generation
+        genera
         evolution_chain @type(name: "EvoChain") {
           url
         }
@@ -20,6 +22,7 @@ export const GET_POKEMON = gql`
       types @type(name: "Types") {
         type
       }
+      game_indices
     }
   }
 `;
@@ -31,3 +34,13 @@ export const GET_EVO_CHAIN = gql`
     }
   } 
 `;
+
+export const GET_SPRITES = gql`
+  query GET_SPRITE($path: String!) {
+    pokemon @rest(type: "Pokemon", path: $path) {
+      sprites @type(name: "Sprites") {
+        front_default
+      }
+    }
+  }
+`
