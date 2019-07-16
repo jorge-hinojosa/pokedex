@@ -36,8 +36,8 @@ export const GET_EVO_CHAIN = gql`
 `;
 
 export const GET_SPRITES = gql`
-  query GET_SPRITE($path: String!) {
-    pokemon @rest(type: "Pokemon", path: $path) {
+  query GET_SPRITES($path: String!) {
+    evolution @rest(type: "Evolution", path: $path) {
       sprites @type(name: "Sprites") {
         front_default
       }

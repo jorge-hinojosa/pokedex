@@ -7,6 +7,8 @@ import { RestLink } from "apollo-link-rest";
 import { ApolloClient } from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloProvider } from "react-apollo";
+import { BrowserRouter as Router } from "react-router-dom";
+
 // import gql from "graphql-tag";
 
 const restLink = new RestLink({
@@ -24,29 +26,11 @@ const ApolloApp = (): any => (
   </ApolloProvider>
 );
 
-// const query = gql`
-//   query pikachu {
-//     pokemon @rest(type: "Pokemon", path: "pokemon/25/") {
-//       name
-//       height
-//       weight
-//       species @type(name: "Species") {
-//         url
-//       }
-//       sprites @type(name: "Sprites") {
-//         front_default
-//       }
-//     }
-//   }
-// `;
-
-// client.query({ query }).then((response: any) => {
-//   console.log(response);
-// });
-
 ReactDOM.render(
-  <StoreProvider>
-    <ApolloApp />
-  </StoreProvider>,
+  <Router>
+    <StoreProvider>
+      <ApolloApp />
+    </StoreProvider>
+  </Router>,
   document.getElementById("root")
 );

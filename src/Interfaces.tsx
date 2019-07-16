@@ -36,3 +36,8 @@ export interface IFavProps {
   toggleFavorite: (state: IState, dispatch: any, pokemon: IPokemon) => IAction;
   party: Array<IPokemon>;
 }
+
+export interface IEvolution {
+  name: string,
+  url: string
+}
