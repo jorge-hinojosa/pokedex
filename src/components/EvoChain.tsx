@@ -2,13 +2,11 @@ import React from 'react'
 import { Query } from "react-apollo";
 import {GET_EVO_CHAIN} from '../Queries';
 import Evolution from './Evolution';
-import { IEvolution } from '../Interfaces';
+import { IEvolution, IEvoChainProps, IEvo } from '../Interfaces';
 
 
-export default function EvoChain(props: any): JSX.Element {
-  console.log(props.evoChainUrl)
-  let evoChainPath = props.evoChainUrl.split('v2')[1];
-  console.log(evoChainPath)
+export default function EvoChain(props: IEvoChainProps): JSX.Element {
+  let evoChainPath: string = props.evoChainUrl.split('v2')[1];
   return (
     <div className='w-full'>
       <Query 
@@ -24,7 +22,6 @@ export default function EvoChain(props: any): JSX.Element {
           if (error)  return <p>Error: {error.message}</p>
           if (!data) return <p className="text-gray-700">Error: {error.message}</p>
           const {chain} = data.evolution_chain;
-          console.log(chain);
 
           const getNestedObject = (nestedObj: any, pathArr: any) => {
             return pathArr.reduce((obj: any, key: any) =>
@@ -54,7 +51,7 @@ export default function EvoChain(props: any): JSX.Element {
 
           //Check for Evolution Branches and Push Evolution Objects into 'evolutions' array
           if (branchLevelTwo && branchLevelTwo.length > 1) {
-            evolutions = branchLevelTwo.map((evo: any, i: number) => {
+            evolutions = branchLevelTwo.map((evo: IEvo, i: number) => {
               return evo.species;
             })
             if (firstEvo && firstEvo.name !== undefined && firstEvo.url !== undefined) {
@@ -63,21 +60,19 @@ export default function EvoChain(props: any): JSX.Element {
             }
           }
           else if (branchLevelOne && branchLevelOne.length > 1) {
-            evolutions = branchLevelOne.map((evo: any, i: number) => {
+            evolutions = branchLevelOne.map((evo: IEvo, i: number) => {
               return evo.species
             })
             evolutions.unshift(baseSpecies);
           } else if (secondEvo && secondEvo.name !== undefined && secondEvo.url !== undefined) {
-            console.log('hit')
             evolutions.push(baseSpecies, firstEvo, secondEvo)
           } else if (firstEvo && firstEvo.name !== undefined && firstEvo.url !== undefined) {
             evolutions.push(baseSpecies, firstEvo)
           }
-          console.log(evolutions)
 
         
 
-          let viewEvolutions = evolutions.map((evo: any, i: number) => {
+          let viewEvolutions = evolutions.map((evo: IEvolution, i: number) => {
             return <Evolution key={i} name={evo.name} url={evo.url}/>
           })
           return (

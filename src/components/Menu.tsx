@@ -27,7 +27,7 @@ export default function Menu(props: any): JSX.Element {
                 My Party
               </li>
             </Link>
-            <li>
+            {/* <li>
               <a
                 href="#"
                 className="block p-4 font-bold hover:bg-gray-600 hover:border-red-500 border-r-4"
@@ -42,7 +42,7 @@ export default function Menu(props: any): JSX.Element {
               >
                 Contact us
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       )}

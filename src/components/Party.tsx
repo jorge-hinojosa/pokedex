@@ -1,6 +1,6 @@
 import React from "react";
 import { Store } from "../Store";
-import { IPokemon, IFavProps } from "../Interfaces";
+import { IFavProps } from "../Interfaces";
 import { toggleFavorite } from "../Actions";
 import Favorite from "./Favorite";
 import { Link } from "react-router-dom";

@@ -2,12 +2,11 @@ import React from 'react'
 import {Query} from 'react-apollo'
 import {GET_SPRITES} from '../Queries'
 import {Link} from 'react-router-dom'
+import { IEvolution } from '../Interfaces';
 
-export default function Evolution(props: any): JSX.Element {
-  console.log(props)
-  let pokemonName = props.name.charAt(0).toUpperCase() + props.name.slice(1)
-  let pokemonUrl = props.url.split('v2')[1].split('-species').join('');
-  console.log(pokemonName, pokemonUrl)
+export default function Evolution(props: IEvolution): JSX.Element {
+  let pokemonName: string = props.name.charAt(0).toUpperCase() + props.name.slice(1)
+  let pokemonUrl: string = props.url.split('v2')[1].split('-species').join('');
   
   return (
     <div>

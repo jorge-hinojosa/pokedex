@@ -30,6 +30,33 @@ export interface IAction {
   type: string;
   payload: any;
 }
+
+export interface IEvolution {
+  name: string,
+  url: string
+}
+
+export interface IEvo {
+  evolution_details: [];
+  evolves_to: [];
+  is_baby: boolean;
+  species: {
+    name: string;
+    url: string
+  }
+}
+
+// Props Interfaces
+export interface IProfileProps {
+  match: {
+    params: {
+      id: string
+    };
+    path: string;
+    url: string;
+  }
+}
+
 export interface IFavProps {
   pokemon: IPokemon;
   store: { state: IState; dispatch: any };
@@ -37,7 +64,6 @@ export interface IFavProps {
   party: Array<IPokemon>;
 }
 
-export interface IEvolution {
-  name: string,
-  url: string
+export interface IEvoChainProps {
+  evoChainUrl: string
 }

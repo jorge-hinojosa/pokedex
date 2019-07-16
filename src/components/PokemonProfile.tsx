@@ -1,26 +1,24 @@
 import React from "react";
 import { Store } from "../Store";
 import { getPokemon, getPokemonSpecies } from "../Actions";
-// import Favorite from "./Favorite";
+import Favorite from "./Favorite";
 import { toggleFavorite } from "../Actions";
-import { IFavProps } from "../Interfaces";
+import { IFavProps, IProfileProps } from "../Interfaces";
 import { Query } from "react-apollo";
 import { GET_POKEMON } from "../Queries";
 import EvoChain from './EvoChain'
 import Game from "./Game";
 import Type from "./Type";
 
-const Favorite = React.lazy<any>(() => import("./Favorite"));
 
-export default function PokemonProfile(props: any): JSX.Element {
+export default function PokemonProfile(props: IProfileProps): JSX.Element {
   const { state, dispatch } = React.useContext(Store);
   const pokemonID = props.match.params.id;
   React.useEffect(() => {
     getPokemon(pokemonID, dispatch);
     getPokemonSpecies(pokemonID, dispatch);
-    // console.log("useEffect");
   }, [pokemonID, dispatch]);
-  const { currPokemon, currSpecies } = state;
+  const { currPokemon } = state;
 
   let favProps: IFavProps = {
     pokemon: currPokemon,
@@ -32,7 +30,6 @@ export default function PokemonProfile(props: any): JSX.Element {
   return (
       <section>
         <Query
-          // <{ pokemon: IPokemon }>
           query={GET_POKEMON}
           fetchPolicy={"network-only"}
           variables={{
@@ -41,18 +38,16 @@ export default function PokemonProfile(props: any): JSX.Element {
         >
           {({ loading, error, data }: { [key: string]: any }) => {
             if (loading) {
-              console.log("loading");
               return <p className="text-gray-700">Loading...</p>;
             }
 
             if (error) 
             {
-              console.log(error)
               return <p className="text-gray-700">Error </p>;
             }
             if (!data) return <p className="text-gray-700">Error</p>;
             const { pokemon } = data;
-            console.log(pokemon);
+           
             return (
               <div className="flex flex-col justify-center items-center text-gray-200 opacity-99">
                 <div className="relative w-full h-24 bg-blue-500 border-b-4 border-blue-300">
@@ -66,9 +61,7 @@ export default function PokemonProfile(props: any): JSX.Element {
                       <h3 className="text-sm mt-3 ml-2 text-gray-400">
                         #{pokemon.id}
                       </h3>
-                      <React.Suspense fallback={<div>Loading...</div>}>
-                        <Favorite {...favProps} />
-                      </React.Suspense>
+                      <Favorite {...favProps} />
                     </div>
                   </div>
                 </div>

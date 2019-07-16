@@ -1,11 +1,11 @@
 import React from "react";
+import { IFavProps, IPokemon } from "../Interfaces";
 
-export default function Favorite(props: any): JSX.Element {
+export default function Favorite(props: IFavProps): JSX.Element {
   const { pokemon, store, toggleFavorite, party } = props;
   const { state, dispatch } = store;
-  // console.log(props);
-  // console.log(pokemon);
-  let filtered = party.filter((poke: any) => poke.id === pokemon.id)
+  
+  let filtered = party.filter((poke: IPokemon) => poke.id === pokemon.id)
 
   return (
     <div>
@@ -22,7 +22,6 @@ export default function Favorite(props: any): JSX.Element {
           onClick={() => toggleFavorite(state, dispatch, pokemon)}
         >
           favorite_border
-          {/* {console.log("render")} */}
         </i>
       )}
     </div>

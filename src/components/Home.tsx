@@ -1,8 +1,6 @@
 import React from "react";
 import { Store } from "../Store";
 import { Redirect } from "react-router";
-// import { GET_POKEMON } from "../Actions";
-// import { Query } from "react-apollo";
 
 const FeatPokemon = React.lazy<any>(() => import("./FeatPokemon"));
 
