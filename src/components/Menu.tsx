@@ -22,19 +22,16 @@ export default function Menu(props: any): JSX.Element {
                 Home
               </li>
             </Link>
+            <Link to='/pokemon' onClick={() => toggleMenu()}>
+              <li className="block p-4 font-bold hover:bg-gray-600 hover:border-red-500 border-r-4">
+                  View All Pokemon
+              </li>
+            </Link>
             <Link to="/party" onClick={() => toggleMenu()}>
               <li className="block p-4 font-bold hover:bg-gray-600 hover:border-red-500 border-r-4">
                 My Party
               </li>
             </Link>
-            {/* <li>
-              <a
-                href="#"
-                className="block p-4 font-bold hover:bg-gray-600 hover:border-red-500 border-r-4"
-              >
-                Services
-              </a>
-            </li>
             <li>
               <a
                 href="#"
@@ -42,7 +39,7 @@ export default function Menu(props: any): JSX.Element {
               >
                 Contact us
               </a>
-            </li> */}
+            </li>
           </ul>
         </div>
       )}

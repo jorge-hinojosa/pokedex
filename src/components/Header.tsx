@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Menu from "./Menu";
 
-export default function Header() {
+export default function Header(): JSX.Element {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const menuProps = {
     menuOpen,

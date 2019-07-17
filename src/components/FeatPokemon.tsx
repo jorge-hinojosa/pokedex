@@ -56,7 +56,7 @@ export default function PokemonList(props: any): JSX.Element {
     return (
       <article
         key={pokemon.data.id}
-        className="w-5/6 flex flex-col justify-around items-center mt-3 p-2 mb-2 bg-blue-500 border-2 border-blue-800 rounded shadow-lg text-gray-200 relative"
+        className="w-5/6 flex flex-col justify-around items-center mt-3 p-2 mb-2 bg-blue-500 border-2 border-blue-800 rounded shadow-lg text-gray-200 static"
       >
         <div className="container flex flex-row justify-around items-center">
           <section className="text-center -mt-2 ml-2">

@@ -5,6 +5,7 @@ const initialState: IState = {
   homePokemon: [],
   currPokemon: [],
   currSpecies: [],
+  allPokemon: [],
   party: []
 };
 
@@ -13,6 +14,8 @@ export const Store = React.createContext<IState | any>(initialState);
 function reducer(state: IState, action: IAction): IState {
   const { type, payload } = action;
   switch (type) {
+    case "GET_ALL_POKEMON":
+      return {...state, allPokemon: payload};
     case "GET_HOME_POKEMON":
       return { ...state, homePokemon: [...state.homePokemon, payload] };
     case "GET_POKEMON":

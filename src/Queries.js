@@ -38,6 +38,8 @@ export const GET_EVO_CHAIN = gql`
 export const GET_SPRITES = gql`
   query GET_SPRITES($path: String!) {
     evolution @rest(type: "Evolution", path: $path) {
+      id
+      name
       sprites @type(name: "Sprites") {
         front_default
       }

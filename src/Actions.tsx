@@ -2,6 +2,20 @@
 import axios from "axios";
 import { IState, IPokemon, IAction } from "./Interfaces";
 
+export const getAllPokemon = async (dispatch: any) => {
+  const URL = `https://pokeapi.co/api/v2/pokemon-species?limit=807`;
+  // const URL = `https://pokeapi.co/api/v2/pokemon/247`;
+  const data = await axios
+    .get(URL)
+    .then(res => res.data.results)
+    .catch(err => console.log(err));
+
+  return dispatch({
+    type: "GET_ALL_POKEMON",
+    payload: data
+  });
+};
+
 export const getHomePokemon = async (dispatch: any, randomID: number) => {
   const URL = `https://pokeapi.co/api/v2/pokemon/${randomID}`;
   // const URL = `https://pokeapi.co/api/v2/pokemon/247`;

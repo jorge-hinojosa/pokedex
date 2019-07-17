@@ -7,6 +7,7 @@ export interface IState {
   homePokemon: Array<IPokemon>;
   currPokemon: Array<IPokemon>;
   currSpecies: any;
+  allPokemon: any;
   party: Array<IPokemon>;
 }
 export interface IPokemon {
@@ -56,7 +57,6 @@ export interface IProfileProps {
     url: string;
   }
 }
-
 export interface IFavProps {
   pokemon: IPokemon;
   store: { state: IState; dispatch: any };

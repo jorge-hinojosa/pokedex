@@ -1,22 +1,29 @@
 import React from "react";
 import { Store } from "../Store";
 import { Redirect } from "react-router";
+import { getAllPokemon } from '../Actions';
+import { Link } from 'react-router-dom';
 
 const FeatPokemon = React.lazy<any>(() => import("./FeatPokemon"));
 
 export default function Home(): JSX.Element {
   const { state, dispatch } = React.useContext(Store);
 
+  React.useEffect(() => {
+    getAllPokemon(dispatch);
+  }, [])
+  console.log(state)
   const [redirect, setRedirect] = React.useState(false);
 
   const [userInput, setUserInput] = React.useState("");
+
   const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
     setUserInput(e.currentTarget.value.toLowerCase());
   };
+
   const handleSearch = () => {
     setRedirect(true);
   };
-
   const props = {
     homePokemon: state.homePokemon,
     party: state.party,
@@ -74,6 +81,18 @@ export default function Home(): JSX.Element {
           </i>
         </form>
       </div>
+      <ul className='w-full m-auto bg-gray-700 text-gray-200 font-robomono rounded absolute mt-56'>
+        { 
+          userInput.length === 0
+          ? null
+          : state.allPokemon
+            .filter((pokemon: any) => pokemon.name.includes(userInput.toLowerCase()))
+            .map((pokemon:any) => {
+              return <Link to={`/pokemon/${pokemon.name}`}>
+                        <li className='p-1 mx-2 hover:cursor-pointer text-lg border-b border-gray-600'>{pokemon.name}</li>
+                     </Link>})
+        }
+      </ul>
       <React.Suspense fallback={<div>Loading...</div>}>
         <FeatPokemon {...props} />
       </React.Suspense>
