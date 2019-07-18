@@ -132,9 +132,13 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
                     {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} Appears in Versions:
                   </h1> 
                   <div className='w-11/12 h-40 m-auto flex flex-col flex-wrap items-center'>
-                    {pokemon.game_indices.reverse().map((game: any, i: number) => {
-                      return <Game key={i} version={game.version.name.charAt(0).toUpperCase() + game.version.name.slice(1)}/>
-                    })}
+                    { 
+                      pokemon.game_indices.length === 0
+                      ? <h1>Looks like the API has failed us!</h1>
+                      : pokemon.game_indices.reverse().map((game: any, i: number) => {
+                        return <Game key={i} version={game.version.name.charAt(0).toUpperCase() + game.version.name.slice(1)}/>
+                        })
+                    }
                   </div> 
                 </div>
               </div>

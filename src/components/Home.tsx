@@ -12,7 +12,7 @@ export default function Home(): JSX.Element {
   React.useEffect(() => {
     getAllPokemon(dispatch);
   }, [])
-  console.log(state)
+  // console.log(state)
   const [redirect, setRedirect] = React.useState(false);
 
   const [userInput, setUserInput] = React.useState("");
@@ -87,8 +87,8 @@ export default function Home(): JSX.Element {
           ? null
           : state.allPokemon
             .filter((pokemon: any) => pokemon.name.includes(userInput.toLowerCase()))
-            .map((pokemon:any) => {
-              return <Link to={`/pokemon/${pokemon.name}`}>
+            .map((pokemon:any, i: number) => {
+              return <Link key={i} to={`/pokemon/${pokemon.name}`}>
                         <li className='p-1 mx-2 hover:cursor-pointer text-lg border-b border-gray-600'>{pokemon.name}</li>
                      </Link>})
         }
