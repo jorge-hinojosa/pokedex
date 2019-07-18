@@ -11,7 +11,7 @@ export default function Home(): JSX.Element {
 
   React.useEffect(() => {
     getAllPokemon(dispatch);
-  }, [])
+  }, [dispatch])
   // console.log(state)
   const [redirect, setRedirect] = React.useState(false);
 

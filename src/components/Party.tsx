@@ -73,9 +73,11 @@ export default function Party(): JSX.Element {
   });
 
   return (
-    <div className="w-full flex flex-col justify-center items-center text-left mt-10">
-      <div className="w-full h-12 bg-blue-500 flex justify-center items-center border-b-4 border-blue-300">
-        <h1 className="text-xl font-robomono text-center text-gray-200">
+    // <div className="w-full flex flex-col justify-center items-center text-left mt-10">
+    //   <div className="w-full pt-3 bg-blue-500 flex justify-center items-center border-b-4 border-blue-300">
+    <div className='mt-10 font-robo flex flex-col justify-center items-center'>
+      <div className='w-full bg-blue-500 py-3 border-b-4 border-blue-300 shadow-md'>
+        <h1 className="text-2xl font-robomono text-center text-gray-200">
           My Party
         </h1>
       </div>

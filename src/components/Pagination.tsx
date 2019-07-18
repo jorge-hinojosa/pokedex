@@ -29,34 +29,80 @@ export default function Pagination(props: any): JSX.Element {
   const lastPage = allPageNumbers[allPageNumbers.length - 1];
 
   return (
-    <nav className='w-56 border border-black mt-15 mx-auto'>
-      <ul className='flex flex-row justify-around items-center'>
-        {/* {
-          allPageNumbers.map((number: number) => {
-            return (
-              <li key={number}>
-                <button onClick={() => paginate(number)}>{number}</button>
-              </li>
-            )
-          })
-        } */}
-        <li>
-          <button onClick={() => paginate(1)}>{firstPage}</button>
-        </li>
-
+    <nav className='w-full mx-auto bg-gray-700 shadow-md py-1 fixed bottom-0'>
+      <ul className='w-64 mx-auto flex flex-row justify-around items-center text-gray-200'>
+        <h1 className='font-robomono text-md'>Page: </h1>
+        {
+          currPage === firstPage ?
+          (
+            <li>
+              <button 
+                className='w-6 focus:outline-none bg-gray-200 rounded-full text-gray-700'
+                onClick={() => paginate(1)}>
+                {firstPage}
+              </button>
+            </li>
+          ) : (
+            <li>
+              <button 
+                className='w-6 focus:outline-none'
+                onClick={() => paginate(1)}>
+                {firstPage}
+              </button>
+            </li>
+          )
+        }
+       
+        {
+          currPage < 5 ? null : <p>...</p>
+        }
         {
           pageNumbersInView.map((number: number) => {
+            if (number === currPage) {
+              return (
+                <li key={number}>
+                <button 
+                  className='w-6 focus:outline-none bg-gray-200 rounded-full text-gray-700'
+                  onClick={() => paginate(number)}>
+                  {number}
+                </button>
+              </li>
+              )
+            }
             return (
               <li key={number}>
-                <button onClick={() => paginate(number)}>{number}</button>
+                <button 
+                  className='w-6 focus:outline-none'
+                  onClick={() => paginate(number)}>
+                  {number}
+                </button>
               </li>
             )
           })
         }
-
-        <li>
-          <button onClick={() => paginate(lastPage)}>{lastPage}</button>
-        </li>
+        {
+          currPage < 29 ? <p>...</p> : null
+        }
+        {
+          currPage === lastPage ?
+          (
+            <li>
+              <button 
+                className='w-6 focus:outline-none bg-gray-200 rounded-full text-gray-700'
+                onClick={() => paginate(lastPage)}>
+                {lastPage}
+              </button>
+            </li>
+          ) : (
+            <li>
+              <button 
+                className='w-6 focus:outline-none'
+                onClick={() => paginate(lastPage)}>
+                {lastPage}
+              </button>
+            </li>
+          )
+        }
       </ul>
     </nav>
   )
