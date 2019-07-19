@@ -578,27 +578,27 @@ video {
   width: 100%;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 500px) {
   .container {
-    max-width: 640px;
+    max-width: 500px;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 700px) {
   .container {
-    max-width: 768px;
+    max-width: 700px;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 850px) {
   .container {
-    max-width: 1024px;
+    max-width: 850px;
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1100px) {
   .container {
-    max-width: 1280px;
+    max-width: 1100px;
   }
 }
 
@@ -7490,7 +7490,7 @@ video {
 
 /* Your custom CSS here */
 
-@media (min-width: 640px) {
+@media (min-width: 500px) {
   .tablet\:appearance-none {
     -webkit-appearance: none;
        -moz-appearance: none;
@@ -14378,7 +14378,7 @@ video {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 700px) {
   .laptop\:appearance-none {
     -webkit-appearance: none;
        -moz-appearance: none;
@@ -21266,7 +21266,7 @@ video {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 850px) {
   .laptop-lg\:appearance-none {
     -webkit-appearance: none;
        -moz-appearance: none;
@@ -28154,7 +28154,7 @@ video {
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1100px) {
   .desktop\:appearance-none {
     -webkit-appearance: none;
        -moz-appearance: none;
