@@ -1,14 +1,23 @@
 import React from 'react'
 import { Store } from '../Store'
-// import PokemonEntries from './PokemonEntries'
 import Pagination from './Pagination';
+import { getAllPokemon } from '../Actions';
 
 const PokemonEntries = React.lazy<any>(() => import("./PokemonEntries"));
 
 
 export default function ViewAll(): JSX.Element {
-  const {state} = React.useContext(Store);
+  const {state, dispatch} = React.useContext(Store);
   const {allPokemon} = state;
+
+  React.useEffect(() => {
+    if (allPokemon.length === 0) {
+      getAllPokemon(dispatch);
+      console.log('request made')
+    }
+  }, [dispatch])
+
+  
 
   const [currPage, setCurrPage] = React.useState(1);
   const [pokemonPerPage] = React.useState(24);
