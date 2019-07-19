@@ -9,15 +9,15 @@ module.exports = {
       99: 0.99
     },
     screens: {
-      'tablet': '500px',
+      'tablet': '420px',
       // => @media (min-width: 640px) { ... }
 
-      'laptop': '600px',
+      'laptop': '500px',
       // => @media (min-width: 1024px) { ... }
 
-      'laptop-lg': '700px',
+      'laptop-lg': '600px',
 
-      'desktop': '850px',
+      'desktop': '750px',
       // => @media (min-width: 1280px) { ... }
     }
   },
