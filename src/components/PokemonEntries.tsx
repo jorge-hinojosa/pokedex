@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 export default function PokemonEntries(props:any): JSX.Element {
   return (
-    <div className='mb-10'>
+    <div className='mb-10 w-3/4 mx-auto laptop:flex laptop:flex-row laptop:flex-wrap laptop:justify-around'>
       {
         props.pokemon.map((pokemon: any, i: number) => {
           const pokemonID = pokemon.url.split('s/')[1];
@@ -30,20 +30,18 @@ export default function PokemonEntries(props:any): JSX.Element {
                 // console.log(evolution)
                 return (
                   <article
-                    className="w-5/6 flex flex-col justify-around items-center mt-3 p-2 mb-2 bg-blue-500 border-2 border-blue-800 rounded shadow-lg text-gray-200 static mx-auto"
+                    className="w-40 h-48 mt-3 p-2 mb-2 bg-blue-500 border-2 border-blue-800 rounded shadow-lg text-gray-200 flex flex-col justify-center items-center static m-auto"
                   >
-                  <div className="container flex flex-row justify-around items-center">
-                    <section className="text-center -mt-2 ml-2">
-                      <h1 className="font-bold font-robomono mb-1">
+                  <div className="container flex flex-col justify-around items-center">
+                      <h1 className="font-bold font-robomono mb-3 text-center">
                         #{evolution.id} {evolution.name.charAt(0).toUpperCase() + evolution.name.slice(1)}
                       </h1>
                       {/* <Favorite {...props} /> */}
-                    </section>
                     <Link to={`./pokemon/${evolution.id}`}>
                       <img
                         src={evolution.sprites.front_default}
                         alt={evolution.name}
-                        className="w-20 bg-red-500 border-4 border-gray-200 rounded-full shadow-md hover:cursor-pointer"
+                        className="w-24 bg-red-500 border-4 border-gray-200 rounded-full shadow-md hover:cursor-pointer"
                       />
                     </Link>
                   </div>

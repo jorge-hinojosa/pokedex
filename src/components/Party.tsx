@@ -48,7 +48,7 @@ export default function Party(): JSX.Element {
     return (
       <article
         key={pokemon.id}
-        className="w-5/6 flex flex-col justify-around items-center mt-3 p-2 mb-2 bg-blue-500 border-2 border-blue-800 rounded shadow-lg text-gray-200 relative"
+        className="w-5/6 flex flex-col justify-around items-center mt-3 p-2 mb-2 bg-blue-500 border-2 border-blue-800 rounded shadow-lg text-gray-200 relative tablet:w-3/5 laptop:w-1/2 desktop:w-2/5"
       >
         <div className="container flex flex-row justify-around items-center">
           <section className="text-center -mt-2 ml-2">
@@ -86,12 +86,12 @@ export default function Party(): JSX.Element {
           <img
             src="https://comicsandmemes.com/wp-content/uploads/surprise-pikachu-meme-000-original-blank.png"
             alt="Surprised Pikachu"
-            className="w-2/3 rounded mt-5"
+            className="w-64 rounded mt-5"
           />
-          <h2 className="antialiased text-center mt-5 w-5/6 text-sm">
+          <p className="antialiased text-center mt-5 w-5/6 text-sm laptop:w-3/5">
             Oh no! Your party is empty. Catch some Pokémon and add them to your
             party by clicking on the heart icon!
-          </h2>
+          </p>
         </>
       ) : (
         viewParty

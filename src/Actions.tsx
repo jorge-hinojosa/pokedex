@@ -70,7 +70,7 @@ export const toggleFavorite = (
 
   // console.log(pokemonInParty);
   if (pokemonInParty === true) {
-    console.log(state.party);
+    // console.log(state.party);
     const withoutPokemon = state.party.filter(
       (member: IPokemon) => member.id !== pokemon.id
     );

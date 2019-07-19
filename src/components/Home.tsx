@@ -34,7 +34,7 @@ export default function Home(): JSX.Element {
       {redirect ? <Redirect to={`/pokemon/${userInput}`} /> : null}
       <div className="w-full h-56 mt-5 bg-blue-500 border-b-4 border-blue-300 flex flex-col justify-center items-center text-gray-200 shadow">
         <h1 className="font-bold text-2xl my-3 font-robomono">Pokédex</h1>
-        <div className="w-56 flex flex-row justify-around items-center mb-2">
+        <div className="w-56 sm:w-48 flex flex-row justify-around items-center mb-2">
           <img
             src="https://image.flaticon.com/icons/svg/188/188987.svg"
             alt="Pokeball"
@@ -80,6 +80,7 @@ export default function Home(): JSX.Element {
             search
           </i>
         </form>
+        
       </div>
       <ul className='w-full m-auto bg-gray-700 text-gray-200 font-robomono rounded absolute mt-56'>
         { 
@@ -93,7 +94,9 @@ export default function Home(): JSX.Element {
                      </Link>})
         }
       </ul>
-      <React.Suspense fallback={<div>Loading...</div>}>
+      <React.Suspense fallback={
+      <img src="https://media3.giphy.com/media/zkMri4yiJ3Mdy/giphy.gif?cid=790b76115d314a80585874726706be88&rid=giphy.gif"
+      alt='pikachu' className='w-64 rounded m-auto'/> }>
         <FeatPokemon {...props} />
       </React.Suspense>
     </React.Fragment>

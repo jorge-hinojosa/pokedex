@@ -6,10 +6,16 @@ import { IFavProps } from "../Interfaces";
 import { Link } from "react-router-dom";
 
 export default function PokemonList(props: any): JSX.Element {
-  let randomID: number = Math.floor(Math.random() * 807);
+  function getRandomID(min:number, max:number) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+  }
+ 
+  let randomID: number = getRandomID(1, 152);
 
   React.useEffect(() => {
-    state.homePokemon.length < 6 && getHomePokemon(dispatch, randomID);
+    state.homePokemon.length < 4 && getHomePokemon(dispatch, randomID);
   });
 
   const { homePokemon, store } = props;
@@ -56,11 +62,11 @@ export default function PokemonList(props: any): JSX.Element {
     return (
       <article
         key={pokemon.data.id}
-        className="w-5/6 flex flex-col justify-around items-center mt-3 p-2 mb-2 bg-blue-500 border-2 border-blue-800 rounded shadow-lg text-gray-200 static"
+        className="w-5/6 flex flex-col justify-center items-center mt-3 p-2 mb-2 bg-blue-500 border-2 border-blue-800 rounded shadow-lg text-gray-200 static tablet:w-3/5 laptop:w-1/2 desktop:w-2/5"
       >
         <div className="container flex flex-row justify-around items-center">
-          <section className="text-center -mt-2 ml-2">
-            <h1 className="font-bold font-robomono mb-1">
+          <section className="text-center ml-2 leading-tight">
+            <h1 className="font-bold font-robomono text-md">
               #{pokemon.data.id} {name}
             </h1>
             <Favorite {...props} />

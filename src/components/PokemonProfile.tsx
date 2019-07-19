@@ -13,6 +13,7 @@ import Type from "./Type";
 
 export default function PokemonProfile(props: IProfileProps): JSX.Element {
   const { state, dispatch } = React.useContext(Store);
+  
   const pokemonID = props.match.params.id;
   React.useEffect(() => {
     getPokemon(pokemonID, dispatch);
@@ -38,7 +39,15 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
         >
           {({ loading, error, data }: { [key: string]: any }) => {
             if (loading) {
-              return <p className="text-gray-700">Loading...</p>;
+              return (
+                <div className='mt-32'>
+                  <img 
+                    src="https://media3.giphy.com/media/zkMri4yiJ3Mdy/giphy.gif?cid=790b76115d313ced303830484dcf9928&rid=giphy.gif" 
+                    alt="loading pikachu"
+                    className='mx-auto w-64 rounded mb-3'/>
+                  <h1 className='text-center text-2xl font-robomono'>Loading...</h1>
+                </div>      
+                );
             }
 
             if (error) 
@@ -47,14 +56,15 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
             }
             if (!data) return <p className="text-gray-700">Error</p>;
             const { pokemon } = data;
-           
+            // const games = pokemon.game_indices.reverse();
+            // console.log(games)
             return (
               <div className="flex flex-col justify-center items-center text-gray-200 opacity-99">
                 <div className="relative w-full h-24 bg-blue-500 border-b-4 border-blue-300">
                   <div className="absolute bottom-0 right-0 mr-2 flex flex-row justify-center items-center z-20">
 
                   {/* Name, id, and favorite button */}
-                    <div className="container mr-2 flex flex-row">
+                    <div className="container mr-2 flex flex-row tablet:mr-12 laptop:mr-16 laptop-lg:mr-32 desktop:mr-40">
                       <h1 className="font-bold font-robomono text-2xl mb-1">
                         {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
                       </h1>
@@ -65,7 +75,7 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
                     </div>
                   </div>
                 </div>
-                <section className="w-full text-gray-700 z-10">
+                <section className="w-full text-gray-700 z-10 tablet:w-5/6 laptop:w-3/4 laptop-lg:w-7/12 desktop:w-1/2">
                   <div className="container">
 
                   {/* Sprite */}
@@ -111,7 +121,7 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
                 </section>
 
                 {/* Description */}
-                <div className="antialiased text-gray-700">
+                <div className="antialiased text-gray-700 tablet:w-5/6 laptop:w-3/4 laptop-lg:w-7/12 desktop:w-1/2">
                   <h1 className="mt-4 font-robomono text-md ml-6">Description: </h1>
                   <p className="text-center text-sm mt-2 mx-5">
                     {pokemon.species.flavor_text_entries[1].language.name === 'en'
@@ -121,13 +131,13 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
                 </div>
 
                 {/* Evolution Tree */}
-                <div className='antialiased text-gray-700 w-full'>
+                <div className='antialiased text-gray-700 w-full tablet:w-5/6 laptop:w-3/4 laptop-lg:w-7/12 desktop:w-1/2'>
                   <h1 className="mt-4 font-robomono text-md ml-6 mb-2">Evolution Tree: </h1>
                   <EvoChain evoChainUrl={pokemon.species.evolution_chain.url}/>
                 </div>
 
                 {/* Games */}
-                <div className='antialiased text-gray-700 w-full'>
+                <div className='antialiased text-gray-700 w-full tablet:w-5/6 laptop:w-3/4 laptop-lg:w-7/12 desktop:w-1/2'>
                   <h1 className="mt-4 font-robomono text-md ml-6 mb-4">
                     {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} Appears in Versions:
                   </h1> 
@@ -135,7 +145,7 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
                     { 
                       pokemon.game_indices.length === 0
                       ? <h1>Looks like the API has failed us!</h1>
-                      : pokemon.game_indices.reverse().map((game: any, i: number) => {
+                      : pokemon.game_indices.map((game: any, i: number) => {
                         return <Game key={i} version={game.version.name.charAt(0).toUpperCase() + game.version.name.slice(1)}/>
                         })
                     }

@@ -19,7 +19,7 @@ export default function Pagination(props: any): JSX.Element {
     pageNumbersInView = allPageNumbers.slice(currPageIndex -2, currPage + 2)
   }
   else if (currPage > 29) {
-    pageNumbersInView = allPageNumbers.slice(28, 32)
+    pageNumbersInView = allPageNumbers.slice(28, 33)
   }
 
 
@@ -81,7 +81,7 @@ export default function Pagination(props: any): JSX.Element {
           })
         }
         {
-          currPage < 29 ? <p>...</p> : null
+          currPage < 30 ? <p>...</p> : null
         }
         {
           currPage === lastPage ?

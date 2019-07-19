@@ -11,14 +11,14 @@ export default function Favorite(props: IFavProps): JSX.Element {
     <div>
       {party.includes(filtered[0]) ? (
         <i
-          className="material-icons text-gray-200 mt-2 ml-2 text-md"
+          className="material-icons text-gray-200 mt-2 ml-2 text-md cursor-pointer"
           onClick={() => toggleFavorite(state, dispatch, pokemon)}
         >
           favorite
         </i>
       ) : (
         <i
-          className="material-icons text-gray-200 mt-2 ml-2 text-md"
+          className="material-icons text-gray-200 mt-2 ml-2 text-md cursor-pointer"
           onClick={() => toggleFavorite(state, dispatch, pokemon)}
         >
           favorite_border
