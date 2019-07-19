@@ -16,7 +16,7 @@ export default function PokemonList(props: any): JSX.Element {
   let randomID: number = getRandomID(1, 152);
 
   React.useEffect(() => {
-    state.homePokemon.length < 5 && getHomePokemon(dispatch, randomID);
+    state.homePokemon.length < 6 && getHomePokemon(dispatch, randomID);
   });
 
   const { homePokemon, store } = props;
