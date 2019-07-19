@@ -1,23 +1,25 @@
 module.exports = {
   theme: {
     extend: {},
-    fontFamily: {
-      robomono: "Roboto Mono, monospace",
-      robo: "Roboto, sans-serif"
-    },
     opacity: {
       99: 0.99
     },
     screens: {
-      'tablet': '420px',
+      'xs': '500px',
       // => @media (min-width: 640px) { ... }
 
-      'laptop': '500px',
+      'sm': '640px',
       // => @media (min-width: 1024px) { ... }
 
-      'laptop-lg': '600px',
+      'md': '780px',
 
-      'desktop': '750px',
+      'lg': '900px',
+
+      'xl': '1050px',
+
+      'xxl': '1195px',
+
+      'xxxl': '1490px'
       // => @media (min-width: 1280px) { ... }
     }
   },

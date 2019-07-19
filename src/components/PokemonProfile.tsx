@@ -45,7 +45,7 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
                     src="https://media3.giphy.com/media/zkMri4yiJ3Mdy/giphy.gif?cid=790b76115d313ced303830484dcf9928&rid=giphy.gif" 
                     alt="loading pikachu"
                     className='mx-auto w-64 rounded mb-3'/>
-                  <h1 className='text-center text-2xl font-robomono'>Loading...</h1>
+                  <h1 className='text-center text-2xl font-mono'>Loading...</h1>
                 </div>      
                 );
             }
@@ -56,16 +56,15 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
             }
             if (!data) return <p className="text-gray-700">Error</p>;
             const { pokemon } = data;
-            // const games = pokemon.game_indices.reverse();
-            // console.log(games)
+           
             return (
               <div className="flex flex-col justify-center items-center text-gray-200 opacity-99">
                 <div className="relative w-full h-24 bg-blue-500 border-b-4 border-blue-300">
                   <div className="absolute bottom-0 right-0 mr-2 flex flex-row justify-center items-center z-20">
 
                   {/* Name, id, and favorite button */}
-                    <div className="container mr-2 flex flex-row tablet:mr-12 laptop:mr-16 laptop-lg:mr-32 desktop:mr-40">
-                      <h1 className="font-bold font-robomono text-2xl mb-1">
+                    <div className="container mr-2 flex flex-row xs:mr-12 sm:mr-16 md:mr-32 lg:mr-48 xl:mr-64">
+                      <h1 className="font-bold font-mono text-2xl mb-1">
                         {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
                       </h1>
                       <h3 className="text-sm mt-3 ml-2 text-gray-400">
@@ -75,7 +74,7 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
                     </div>
                   </div>
                 </div>
-                <section className="w-full text-gray-700 z-10 tablet:w-5/6 laptop:w-3/4 laptop-lg:w-7/12 desktop:w-1/2">
+                <section className="w-full text-gray-700 z-10 xs:w-5/6 sm:w-3/5 md:w-1/2 lg:w-5/12 xl:5/12 xxl:w-1/3">
                   <div className="container">
 
                   {/* Sprite */}
@@ -89,9 +88,9 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
                     {/* Category Box */}
                       <article className="w-32 h-20 p-2 bg-blue-500 rounded shadow-md mt-24 ml-6">
                         <div className="h-16 text-gray-200 flex flex-col justify-around items-center leading-tight">
-                          <span className="text-xs font-robomono mt-2">Category: </span>
+                          <span className="text-xs font-mono mt-2">Category: </span>
                           <p className="text-sm text-center mb-1">{pokemon.species.genera[2].genus}</p>
-                          <p className="text-xs font-robomono mb-3">Generation: 
+                          <p className="text-xs font-mono mb-3">Generation: 
                             <span className='text-sm font-robo'>{' ' + pokemon.species.generation.name.slice(11).toUpperCase()}</span>
                           </p>
                         </div>
@@ -100,7 +99,7 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
                     {/* Type(s), Height, and Weight Box */}
                       <article className="text-left w-40 mt-4 mr-6 p-2 rounded shadow-md bg-gray-600 text-gray-200">
                         <div className="mr-2">
-                          <span className="text-xs font-robomono">Type:</span>
+                          <span className="text-xs font-mono">Type:</span>
                           <div className="text-md flex flex-row">
                             {pokemon.types.map((e: any, i: number) => {
                               return <Type key={i} type={e.type.name.charAt(0).toUpperCase() + e.type.name.slice(1)}/>;
@@ -108,11 +107,11 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
                           </div>
                         </div>
                         <div className="mr-2">
-                          <span className="text-xs font-robomono">Height:</span>
+                          <span className="text-xs font-mono">Height:</span>
                           <p className="text-md">{(pokemon.height / 3.048).toFixed(2)} ft.</p>
                         </div>
                         <div className="mr-2">
-                          <span className="text-xs font-robomono">Weight:</span>
+                          <span className="text-xs font-mono">Weight:</span>
                           <p className="text-md">{(pokemon.weight / 4.536).toFixed(2)} lbs.</p>
                         </div>
                       </article>
@@ -121,8 +120,8 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
                 </section>
 
                 {/* Description */}
-                <div className="antialiased text-gray-700 tablet:w-5/6 laptop:w-3/4 laptop-lg:w-7/12 desktop:w-1/2">
-                  <h1 className="mt-4 font-robomono text-md ml-6">Description: </h1>
+                <div className="antialiased text-gray-700 xs:w-5/6 sm:w-3/5 md:w-1/2 lg:w-5/12 xl:5/12 xxl:w-1/3">
+                  <h1 className="mt-4 font-mono text-md ml-6">Description: </h1>
                   <p className="text-center text-sm mt-2 mx-5">
                     {pokemon.species.flavor_text_entries[1].language.name === 'en'
                       ? pokemon.species.flavor_text_entries[1].flavor_text 
@@ -131,14 +130,14 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
                 </div>
 
                 {/* Evolution Tree */}
-                <div className='antialiased text-gray-700 w-full tablet:w-5/6 laptop:w-3/4 laptop-lg:w-7/12 desktop:w-1/2'>
-                  <h1 className="mt-4 font-robomono text-md ml-6 mb-2">Evolution Tree: </h1>
+                <div className='antialiased text-gray-700 w-full xs:w-5/6 sm:w-3/5 md:w-1/2 lg:w-5/12 xl:5/12 xxl:w-1/3'>
+                  <h1 className="mt-4 font-mono text-md ml-6 mb-2">Evolution Tree: </h1>
                   <EvoChain evoChainUrl={pokemon.species.evolution_chain.url}/>
                 </div>
 
                 {/* Games */}
-                <div className='antialiased text-gray-700 w-full tablet:w-5/6 laptop:w-3/4 laptop-lg:w-7/12 desktop:w-1/2'>
-                  <h1 className="mt-4 font-robomono text-md ml-6 mb-4">
+                <div className='antialiased text-gray-700 w-full xs:w-5/6 sm:w-3/5 md:w-1/2 lg:w-5/12 xl:5/12 xxl:w-1/3'>
+                  <h1 className="mt-4 font-mono text-md ml-6 mb-4">
                     {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} Appears in Versions:
                   </h1> 
                   <div className='w-11/12 h-40 m-auto flex flex-col flex-wrap items-center'>

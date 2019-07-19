@@ -31,7 +31,7 @@ export default function Pagination(props: any): JSX.Element {
   return (
     <nav className='w-full mx-auto bg-gray-700 shadow-md py-1 fixed bottom-0'>
       <ul className='w-64 mx-auto flex flex-row justify-around items-center text-gray-200'>
-        <h1 className='font-robomono text-md'>Page: </h1>
+        <h1 className='font-mono text-md'>Page: </h1>
         {
           currPage === firstPage ?
           (
