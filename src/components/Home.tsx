@@ -82,7 +82,7 @@ export default function Home(): JSX.Element {
         </form>
         
       </div>
-      <ul className='w-full m-auto bg-gray-700 text-gray-200 font-mono rounded absolute mt-56'>
+      <ul className='w-full m-auto bg-gray-700 text-gray-200 font-mono rounded absolute mt-64'>
         { 
           userInput.length === 0
           ? null
