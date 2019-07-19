@@ -90,7 +90,7 @@ export default function Home(): JSX.Element {
             .filter((pokemon: any) => pokemon.name.includes(userInput.toLowerCase()))
             .map((pokemon:any, i: number) => {
               return <Link key={i} to={`/pokemon/${pokemon.name}`}>
-                        <li className='p-1 mx-2 hover:cursor-pointer text-lg border-b border-gray-600'>{pokemon.name}</li>
+                        <li className='p-1 mx-2 hover:cursor-pointer text-lg border-b border-gray-600 hover:border-red-300'>{pokemon.name}</li>
                      </Link>})
         }
       </ul>

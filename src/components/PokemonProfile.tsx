@@ -59,20 +59,18 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
            
             return (
               <div className="flex flex-col justify-center items-center text-gray-200 opacity-99">
-                <div className="relative w-full h-24 bg-blue-500 border-b-4 border-blue-300">
-                  <div className="absolute bottom-0 right-0 mr-2 flex flex-row justify-center items-center z-20">
-
-                  {/* Name, id, and favorite button */}
-                    <div className="container mr-2 flex flex-row xs:mr-12 sm:mr-16 md:mr-32 lg:mr-48 xl:mr-64">
-                      <h1 className="font-bold font-mono text-2xl mb-1">
-                        {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
-                      </h1>
-                      <h3 className="text-sm mt-3 ml-2 text-gray-400">
-                        #{pokemon.id}
-                      </h3>
-                      <Favorite {...favProps} />
+                <div className="w-full h-24 bg-blue-500 flex justify-center border-b-4 border-blue-300">
+                  
+                      <div className='mt-12 w-11/12 xs:w-5/6 sm:w-3/5 md:w-1/2 lg:w-5/12 xl:5/12 xxl:w-1/3 flex justify-end'>
+                        <h1 className="font-bold font-mono text-2xl mb-1">
+                          {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+                        </h1>
+                        <h3 className="text-sm mt-3 ml-2 text-gray-400">
+                          #{pokemon.id}
+                        </h3>
+                        <Favorite {...favProps} />
                     </div>
-                  </div>
+                  
                 </div>
                 <section className="w-full text-gray-700 z-10 xs:w-5/6 sm:w-3/5 md:w-1/2 lg:w-5/12 xl:5/12 xxl:w-1/3">
                   <div className="container">
@@ -89,9 +87,9 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
                       <article className="w-32 h-20 p-2 bg-blue-500 rounded shadow-md mt-24 ml-6">
                         <div className="h-16 text-gray-200 flex flex-col justify-around items-center leading-tight">
                           <span className="text-xs font-mono mt-2">Category: </span>
-                          <p className="text-sm text-center mb-1">{pokemon.species.genera[2].genus}</p>
+                          <p className="text-xs text-center mb-1">{pokemon.species.genera[2].genus}</p>
                           <p className="text-xs font-mono mb-3">Generation: 
-                            <span className='text-sm font-robo'>{' ' + pokemon.species.generation.name.slice(11).toUpperCase()}</span>
+                            <span className='text-xs font-robo'>{' ' + pokemon.species.generation.name.slice(11).toUpperCase()}</span>
                           </p>
                         </div>
                       </article>
