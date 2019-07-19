@@ -34,7 +34,7 @@ export default function Home(): JSX.Element {
       {redirect ? <Redirect to={`/pokemon/${userInput}`} /> : null}
       <div className="w-full h-64 mt-4 bg-blue-500 border-b-4 border-blue-300 flex flex-col justify-center items-center text-gray-200 shadow">
         <h1 className="text-4xl my-3 font-mono">Pokédex</h1>
-        <div className="w-1/3 flex flex-row justify-around items-center mb-2">
+        <div className="w-2/3 flex flex-row justify-around items-center mb-2 sm:w-1/2 md:w-1/3">
           <img
             src="https://image.flaticon.com/icons/svg/188/188987.svg"
             alt="Pokeball"
