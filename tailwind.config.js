@@ -12,12 +12,12 @@ module.exports = {
       'tablet': '500px',
       // => @media (min-width: 640px) { ... }
 
-      'laptop': '700px',
+      'laptop': '600px',
       // => @media (min-width: 1024px) { ... }
 
-      'laptop-lg': '850px',
+      'laptop-lg': '700px',
 
-      'desktop': '1100px',
+      'desktop': '850px',
       // => @media (min-width: 1280px) { ... }
     }
   },
