@@ -50,8 +50,7 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
                 );
             }
 
-            if (error) 
-            {
+            if (error) {
               return <p className="text-gray-700">Error </p>;
             }
             if (!data) return <p className="text-gray-700">Error</p>;
@@ -61,7 +60,7 @@ export default function PokemonProfile(props: IProfileProps): JSX.Element {
               <div className="flex flex-col justify-center items-center text-gray-200 opacity-99">
                 <div className="w-full h-24 bg-blue-500 flex justify-center border-b-4 border-blue-300">
                   
-                      <div className='mt-12 w-11/12 xs:w-5/6 sm:w-3/5 md:w-1/2 lg:w-5/12 xl:5/12 xxl:w-1/3 flex justify-end'>
+                    <div className='mt-12 w-11/12 xs:w-5/6 sm:w-3/5 md:w-1/2 lg:w-5/12 xl:5/12 xxl:w-1/3 flex justify-end z-20'>
                         <h1 className="font-bold font-mono text-2xl mb-1">
                           {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
                         </h1>

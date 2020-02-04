@@ -4,7 +4,6 @@ import { IState, IPokemon, IAction } from "./Interfaces";
 
 export const getAllPokemon = async (dispatch: any) => {
   const URL = `https://pokeapi.co/api/v2/pokemon-species?limit=807`;
-  // const URL = `https://pokeapi.co/api/v2/pokemon/247`;
   const data = await axios
     .get(URL)
     .then(res => res.data.results)
@@ -18,7 +17,6 @@ export const getAllPokemon = async (dispatch: any) => {
 
 export const getHomePokemon = async (dispatch: any, randomID: number) => {
   const URL = `https://pokeapi.co/api/v2/pokemon/${randomID}`;
-  // const URL = `https://pokeapi.co/api/v2/pokemon/247`;
   const data = await axios
     .get(URL)
     .then(res => res)
@@ -70,11 +68,9 @@ export const toggleFavorite = (
 
   // console.log(pokemonInParty);
   if (pokemonInParty === true) {
-    // console.log(state.party);
     const withoutPokemon = state.party.filter(
       (member: IPokemon) => member.id !== pokemon.id
     );
-    // console.log(withoutPokemon);
     dispatchObj = {
       type: "REMOVE_POKE_FROM_PARTY",
       payload: withoutPokemon
